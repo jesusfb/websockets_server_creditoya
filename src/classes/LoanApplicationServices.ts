@@ -1,6 +1,6 @@
 // Importar las declaraciones necesarias
 
-import { prisma } from "../prisma/db";
+import { prisma } from "../../prisma/db";
 import { LoanApplication } from "@prisma/client";
 import { ScalarLoanApplication, Status } from "../types/User";
 
@@ -61,6 +61,17 @@ class LoanApplicationService {
     return prisma.loanApplication.update({
       where: { id: loanApplicationId },
       data: { status: newStatus },
+    });
+  }
+
+  // Método para llenar el campo "employeeId" de una solicitud de préstamo específica
+  static async fillEmployeeId(
+    loanId: string,
+    employeeId: string
+  ): Promise<LoanApplication> {
+    return prisma.loanApplication.update({
+      where: { id: loanId },
+      data: { employeeId },
     });
   }
 }

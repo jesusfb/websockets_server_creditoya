@@ -1,10 +1,10 @@
- function createEmailTemplate({
+const createEmailTemplate = ({
   nameUser,
   loanApplicationId,
 }: {
   nameUser: string;
   loanApplicationId: string;
-}): string {
+}): string => {
   const emailTemplate = `
       <div style="background-color: #f8f9fa; padding: 20px;">
         <h2 style="color: #6c757d;">Hola ${nameUser},</h2>
@@ -13,6 +13,6 @@
       </div>
     `;
   return emailTemplate;
-}
+};
 
-export default createEmailTemplate
+export default createEmailTemplate;

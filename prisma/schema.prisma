@@ -1,6 +1,5 @@
 generator client {
     provider = "prisma-client-js"
-    output = "../../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -54,6 +53,7 @@ model Document {
 model LoanApplication {
     id                                   String        @id @default(uuid()) @map("_id")
     userId                               String
+    employeeId                           String?       @default("Standby")
     user                                 User          @relation(fields: [userId], references: [id])
     email                                String
     principal_debtor                     String

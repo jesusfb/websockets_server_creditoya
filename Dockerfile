@@ -16,6 +16,9 @@ COPY . .
 # Instalando ts globalmente en la imagen
 RUN npm install -g typescript
 
+# Generate Prisma client
+RUN npx prisma generate --schema=./prisma/schema.prisma
+
 # Compila tu código TypeScript
 RUN npm run build
 
@@ -25,13 +28,13 @@ FROM node:20 as prisma-config
 # Copia los archivos necesarios desde la etapa de construcción
 COPY --from=build /usr/src/app/dist ./dist
 COPY package*.json ./
-COPY --from=build /usr/src/app/src/prisma ./prisma
+COPY --from=build /usr/src/app/prisma ./prisma
 
 # Instala solo las dependencias de producción
 RUN npm ci --only=production
 
-# Genera el cliente prisma
-RUN npx prisma generate
+# Generate Prisma client
+RUN npx prisma generate --schema=./prisma/schema.prisma
 
 # Crea una nueva etapa para una imagen más pequeña y eficiente
 FROM node:20 as production

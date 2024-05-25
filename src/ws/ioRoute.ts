@@ -87,6 +87,8 @@ io.on("connection", (socket) => {
       (result) => console.log(result)
     );
 
+    await LoanApplicationService.fillEmployeeId(loanApplicationId, employeeId);
+
     if (state == "Rechazado") {
       io.emit("newEventReqLoans", dataEventRejected);
     }
@@ -95,7 +97,7 @@ io.on("connection", (socket) => {
       io.emit("newEventReqLoans", dataEventAccept);
 
       // Envio de correo electronico a cliente para avisar su aceptacion de prestamo
-      const data = await transporter
+      await transporter
         .sendMail({
           from: `"Credito ya" ${process.env.GOOGLE_EMAIL} `,
           to: emailUser,

@@ -1,6 +1,7 @@
 export type ScalarLoanApplication = {
   id?: string;
   userId: string;
+  employeeId?: string;
   email: string;
   principal_debtor: string;
   co_debtor: string;
