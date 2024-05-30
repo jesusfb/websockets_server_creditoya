@@ -25,12 +25,13 @@ RUN npm run build
 # Crea una nueva etapa para configurar Prisma
 FROM node:20 as prisma-config
 
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /usr/src/app
+
 # Copia los archivos necesarios desde la etapa de construcción
 COPY --from=build /usr/src/app/dist ./dist
 COPY package*.json ./
 COPY --from=build /usr/src/app/prisma ./prisma
-
-RUN ls -l /usr/src/app
 
 # Instala solo las dependencias de producción
 RUN npm ci --only=production
