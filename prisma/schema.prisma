@@ -138,7 +138,7 @@ model LoanApplication {
     affecting_loan_balance               String?
     affecting_loan_quota_value           String?
     bankCurrentAccount                   Boolean       @default(false) // Cuenta corriente
-    bankSavingAccount                    Boolean       @default(false) // Ahorros
+    bankSavingAccount                    Boolean       @default(false) // Cuenta Ahorros
     bankNumberAccount                    String // Nro. de cuenta
     entity                               String // Entidad
     ccNumber                             String        @unique

@@ -30,6 +30,8 @@ COPY --from=build /usr/src/app/dist ./dist
 COPY package*.json ./
 COPY --from=build /usr/src/app/prisma ./prisma
 
+RUN ls -l /usr/src/app
+
 # Instala solo las dependencias de producción
 RUN npm ci --only=production
 
