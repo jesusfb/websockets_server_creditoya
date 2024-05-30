@@ -7,7 +7,9 @@ const io = new Server(server, {
   cors: {
     origin: [
       "http://localhost:3000/",
+      "http://localhost:3000/dashboard",
       "http://localhost:3001/",
+      "http://localhost:3001/dashboard",
       "https://creditoya.vercel.app/",
       "https://creditoya.vercel.app/dashboard",
       "https://intranet-creditoya.vercel.app/",
