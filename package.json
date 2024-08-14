@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^5.14.0",
+    "@prisma/client": "^5.18.0",
     "@types/nodemailer": "^6.4.15",
     "axios": "^1.6.8",
     "cors": "^2.8.5",
